@@ -1,4 +1,10 @@
+import { IsNotEmpty, IsDateString } from 'class-validator';
+
 export class TrackHabitDto {
-    date: string; // Format: YYYY-MM-DD
-  }
-  
+  @IsNotEmpty({ message: 'Habit ID is required' })
+  habitId: number;
+
+  @IsDateString({}, { message: 'Date must be a valid date' })
+  @IsNotEmpty({ message: 'Date is required' })
+  date: string;
+}
